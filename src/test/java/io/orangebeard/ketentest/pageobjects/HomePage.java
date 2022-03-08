@@ -7,24 +7,17 @@ import static org.openqa.selenium.support.How.CSS;
 
 public class HomePage extends Page {
 
-    @FindBy(how = CSS, using = "input[data-original_id='name']")
-    private WebElement nameInput;
+    @FindBy(how = CSS, using = "input[name='keywords']")
+    private WebElement searchfield;
 
-    @FindBy(how = CSS, using = "input[data-original_id='company']")
-    private WebElement compagnyInput;
+    @FindBy(how = CSS, using = "input[title=' Quick Find ']")
+    private WebElement searchButton;
 
-    @FindBy(how = CSS, using = "button[type='submit']")
-    private WebElement callmeButton;
-
-    public void setNameInput(String username) {
-        nameInput.sendKeys(username);
+    public void setSearchfield(String username) {
+        searchfield.sendKeys(username);
     }
 
-    public void setCompagnyInput(String password) {
-        compagnyInput.sendKeys(password);
-    }
-
-    public void clickCallmeButton() {
-        callmeButton.click();
+    public void clickSearchButton() {
+        searchButton.click();
     }
 }

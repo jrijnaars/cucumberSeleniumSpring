@@ -1,5 +1,6 @@
 package io.orangebeard.ketentest.steps;
 
+import io.cucumber.java.nl.Als;
 import io.cucumber.java.nl.Gegeven;
 import io.orangebeard.ketentest.Browser;
 import io.orangebeard.ketentest.pageobjects.HomePage;
@@ -13,9 +14,13 @@ public class HomepageStep {
 
     @Gegeven("ik naar orangebeard ga")
     public void goToOrangebeard() {
-        browser.openURL("https://orangebeard.io/","Orangebeard | Intelligent automated testing ");
+        browser.openURL("http://31.14.96.60/","Praegus Workshop!");
+    }
+
+    @Als("ik zoek op: {word}")
+    public void searchFor(String searchterm) {
         HomePage homePage = browser.laadPagina(HomePage.class);
-        homePage.setNameInput("testname");
-        homePage.setCompagnyInput("testcompagny");
+        homePage.setSearchfield(searchterm);
+        homePage.clickSearchButton();
     }
 }
