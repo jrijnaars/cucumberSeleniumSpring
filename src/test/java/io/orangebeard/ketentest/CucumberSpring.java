@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 @CucumberContextConfiguration
 @SpringBootTest(webEnvironment= WebEnvironment.RANDOM_PORT)
-public class CucumberSpringTest {
+public class CucumberSpring {
 
     @Autowired
     private Browser browser;
