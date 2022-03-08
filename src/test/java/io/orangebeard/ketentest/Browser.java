@@ -1,16 +1,18 @@
 package io.orangebeard.ketentest;
 
 import io.orangebeard.ketentest.pageobjects.Page;
+import lombok.SneakyThrows;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Component;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -20,12 +22,13 @@ public class Browser {
 
     private WebDriver driver;
 
+    @SneakyThrows
     public void startBrowser() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         System.setProperty("webdriver.chrome.silentOutput", "true");
         ChromeOptions options = new ChromeOptions();
         options.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
-        driver = new ChromeDriver(options);
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
 
         driver.manage()
               .timeouts()
